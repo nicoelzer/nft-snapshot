@@ -28,9 +28,10 @@ Modify the configuration file to your needs
 ```json
 {
   "provider": "https://mainnet.infura.io/v3/<key>",
-  "contractAddress": "0x369156da04b6f313b532f7ae08e661e402b1c2f2",
-  "startId": 1,
-  "endId": 10000
+  "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "startId": 0,
+  "endId": 9999,
+  "outputFile": "snapshot.json"
 }
 ```
 
@@ -38,9 +39,6 @@ Modify the configuration file to your needs
 
 ### 4. Run Snapshot
 
-Run the program:
-
-Using yarn:
 ```
 yarn start
 ```

@@ -8,9 +8,9 @@ const main = async () => {
   const provider = new JsonRpcProvider(config.provider)
   const { chainId } = await provider.getNetwork()
   const contractInstance = new ethers.Contract(contracts[chainId], ABI, provider)
-  
+
   const result = await contractInstance.getOwners(config.contractAddress, config.startId, config.endId)
-  
+
   const tokenList: any[] = []
   const holders: any[] = []
 
