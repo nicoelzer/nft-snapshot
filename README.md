@@ -10,17 +10,19 @@ Currently supported Networks:
 
 ## Getting Started
 
+### 1. Clone Repo
+
 ```
 git clone https://github.com/nicoelzer/nft-snapshot
 ```
 
-### 1. Install Dependencies
+### 2. Install Dependencies
 
 ```
 yarn
 ```
 
-### 2. Modify snapshot.config.ts
+### 3. Modify snapshot.config.ts
 
 Modify the configuration file to your needs
 ```json
@@ -34,17 +36,18 @@ Modify the configuration file to your needs
 
 
 
-### 3. Run Snapshot
+### 4. Run Snapshot
 
 Run the program:
 
+Using yarn:
 ```
-npx ts-node src/index
+yarn start
 ```
 
 ## Sample Outout
 
-```json
+```javascript
 {
   stats: {
     total_nfts: 10,
