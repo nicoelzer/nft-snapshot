@@ -1,0 +1,132 @@
+{
+    "stats": {
+        "total_nfts": 11,
+        "unique_owners": 11,
+        "unique_owners_percentage": "100.00"
+    },
+    "holders": [
+        {
+            "owner": "0x361F035fc8853F53cF30f47Bf1eb3EE01d297bBe",
+            "amount": 1,
+            "tokens": [
+                0
+            ]
+        },
+        {
+            "owner": "0xb0ba62372464efb76AbF5dD67eA3777fBC6cc7Ef",
+            "amount": 1,
+            "tokens": [
+                1
+            ]
+        },
+        {
+            "owner": "0xe29bE7223EF34827A859bCFf8718c459aff85C51",
+            "amount": 1,
+            "tokens": [
+                2
+            ]
+        },
+        {
+            "owner": "0x00EAe5574315a872e3AB32d44d33c8ea2b69c12f",
+            "amount": 1,
+            "tokens": [
+                3
+            ]
+        },
+        {
+            "owner": "0xa362F185e31721e3B07471b86BBcF70eE94Ec64C",
+            "amount": 1,
+            "tokens": [
+                4
+            ]
+        },
+        {
+            "owner": "0xc72EA0B7f0Fe29E557117DB7b79a36af17Ddd4b5",
+            "amount": 1,
+            "tokens": [
+                5
+            ]
+        },
+        {
+            "owner": "0xb35CffB3D4913b4B1f73B76Ab893fA0f99CFE9f2",
+            "amount": 1,
+            "tokens": [
+                6
+            ]
+        },
+        {
+            "owner": "0xeD26FD0218b85f296cd56CD40c9955A36B52020E",
+            "amount": 1,
+            "tokens": [
+                7
+            ]
+        },
+        {
+            "owner": "0x413b1E1B39da81E20E92A38366BD6219E963b576",
+            "amount": 1,
+            "tokens": [
+                8
+            ]
+        },
+        {
+            "owner": "0x9055bE0A390371fEaBa2271eDcB69D653BB6557B",
+            "amount": 1,
+            "tokens": [
+                9
+            ]
+        },
+        {
+            "owner": "0x5caA901a7349dbE003032De99469991C524e196A",
+            "amount": 1,
+            "tokens": [
+                10
+            ]
+        }
+    ],
+    "tokenList": [
+        {
+            "tokenId": 0,
+            "owner": "0x361F035fc8853F53cF30f47Bf1eb3EE01d297bBe"
+        },
+        {
+            "tokenId": 1,
+            "owner": "0xb0ba62372464efb76AbF5dD67eA3777fBC6cc7Ef"
+        },
+        {
+            "tokenId": 2,
+            "owner": "0xe29bE7223EF34827A859bCFf8718c459aff85C51"
+        },
+        {
+            "tokenId": 3,
+            "owner": "0x00EAe5574315a872e3AB32d44d33c8ea2b69c12f"
+        },
+        {
+            "tokenId": 4,
+            "owner": "0xa362F185e31721e3B07471b86BBcF70eE94Ec64C"
+        },
+        {
+            "tokenId": 5,
+            "owner": "0xc72EA0B7f0Fe29E557117DB7b79a36af17Ddd4b5"
+        },
+        {
+            "tokenId": 6,
+            "owner": "0xb35CffB3D4913b4B1f73B76Ab893fA0f99CFE9f2"
+        },
+        {
+            "tokenId": 7,
+            "owner": "0xeD26FD0218b85f296cd56CD40c9955A36B52020E"
+        },
+        {
+            "tokenId": 8,
+            "owner": "0x413b1E1B39da81E20E92A38366BD6219E963b576"
+        },
+        {
+            "tokenId": 9,
+            "owner": "0x9055bE0A390371fEaBa2271eDcB69D653BB6557B"
+        },
+        {
+            "tokenId": 10,
+            "owner": "0x5caA901a7349dbE003032De99469991C524e196A"
+        }
+    ]
+}
