@@ -15,8 +15,8 @@ const main = async () => {
   const holders: any[] = []
 
   result.forEach((item: any, index: any) => {
-    tokenList.push({ tokenId: index, owner: item })
-    upsert(holders, { tokenId: index, owner: item })
+    tokenList.push({ tokenId: index + config.startId, owner: item })
+    upsert(holders, { tokenId: index + config.startId, owner: item })
   })
 
   const stats = {
