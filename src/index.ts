@@ -1,22 +1,22 @@
 import * as ethers from 'ethers'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { config } from './snapshot.config'
 import { ABI, contracts } from './contants'
 import * as fs from 'fs'
 
 const main = async () => {
-  const provider = new JsonRpcProvider(config.provider)
+  const {RPC, CONTRACT, START, END, OUTPUT} = process.env
+  const provider = new JsonRpcProvider(RPC)
   const { chainId } = await provider.getNetwork()
   const contractInstance = new ethers.Contract(contracts[chainId], ABI, provider)
 
-  const result = await contractInstance.getOwners(config.contractAddress, config.startId, config.endId)
+  const result = await contractInstance.getOwners(CONTRACT, START, END)
 
   const tokenList: any[] = []
   const holders: any[] = []
 
   result.forEach((item: any, index: any) => {
-    tokenList.push({ tokenId: index + config.startId, owner: item })
-    upsert(holders, { tokenId: index + config.startId, owner: item })
+    tokenList.push({ tokenId: index + START, owner: item })
+    upsert(holders, { tokenId: index + START, owner: item })
   })
 
   const stats = {
@@ -26,8 +26,8 @@ const main = async () => {
   }
 
   const data = { stats: stats, holders: holders, tokenList: tokenList }
-  console.log(`snapshot exported to ${config.outputFile}`)
-  fs.writeFile(config.outputFile, JSON.stringify(data, null, 4), function (err) {
+  console.log(`snapshot exported to ${OUTPUT}`)
+  fs.writeFile(`${OUTPUT}`, JSON.stringify(data, null, 4), function (err) {
     if (err) {
       console.log(err)
     }
