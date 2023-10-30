@@ -4,7 +4,7 @@ import { ABI, contracts } from './contants'
 import * as fs from 'fs'
 
 const main = async () => {
-  const {RPC, CONTRACT, START, END, OUTPUT} = process.env
+  const { RPC, CONTRACT, START, END, OUTPUT } = process.env
   const provider = new JsonRpcProvider(RPC)
   const { chainId } = await provider.getNetwork()
   const contractInstance = new ethers.Contract(contracts[chainId], ABI, provider)
@@ -26,8 +26,9 @@ const main = async () => {
   }
 
   const data = { stats: stats, holders: holders, tokenList: tokenList }
-  console.log(`snapshot exported to ${OUTPUT}`)
-  fs.writeFile(`${OUTPUT}`, JSON.stringify(data, null, 4), function (err) {
+  const output = OUTPUT || 'snapshot.json';
+  console.log(`snapshot exported to ${output}`)
+  fs.writeFile(`${output}`, JSON.stringify(data, null, 4), function (err) {
     if (err) {
       console.log(err)
     }
@@ -42,7 +43,7 @@ function upsert(array: any, element: any) {
   } else array.push({ owner: element.owner, amount: 1, tokens: [element.tokenId] })
 }
 
-;(async () => {
+; (async () => {
   try {
     await main()
   } catch (e) {
