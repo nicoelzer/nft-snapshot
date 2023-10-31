@@ -1,22 +1,29 @@
 import * as ethers from 'ethers'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { config } from './snapshot.config'
 import { ABI, contracts } from './contants'
 import * as fs from 'fs'
 
 const main = async () => {
-  const provider = new JsonRpcProvider(config.provider)
+  const { RPC, CONTRACT, START, END, OUTPUT } = process.env
+
+  if (!RPC || !CONTRACT || !START || !END) {
+    throw "RPC, CONTRACT, START and END environment variables are required";
+  }
+
+  const provider = new JsonRpcProvider(RPC)
   const { chainId } = await provider.getNetwork()
   const contractInstance = new ethers.Contract(contracts[chainId], ABI, provider)
 
-  const result = await contractInstance.getOwners(config.contractAddress, config.startId, config.endId)
+  const result = await contractInstance.getOwners(CONTRACT, START, END)
 
   const tokenList: any[] = []
   const holders: any[] = []
 
-  result.forEach((item: any, index: any) => {
-    tokenList.push({ tokenId: index, owner: item })
-    upsert(holders, { tokenId: index, owner: item })
+  result.forEach((owner: any, index: any) => {
+    const tokenId = parseInt(index) + parseInt(START)
+    console.log(index, START, tokenId)
+    tokenList.push({ tokenId, owner })
+    upsert(holders, { tokenId, owner })
   })
 
   const stats = {
@@ -26,8 +33,9 @@ const main = async () => {
   }
 
   const data = { stats: stats, holders: holders, tokenList: tokenList }
-  console.log(`snapshot exported to ${config.outputFile}`)
-  fs.writeFile(config.outputFile, JSON.stringify(data, null, 4), function (err) {
+  const output = OUTPUT || 'snapshot.json';
+  console.log(`snapshot exported to ${output}`)
+  fs.writeFile(`${output}`, JSON.stringify(data, null, 4), { encoding: 'utf-8' }, function (err) {
     if (err) {
       console.log(err)
     }
@@ -42,7 +50,7 @@ function upsert(array: any, element: any) {
   } else array.push({ owner: element.owner, amount: 1, tokens: [element.tokenId] })
 }
 
-;(async () => {
+; (async () => {
   try {
     await main()
   } catch (e) {
