@@ -35,7 +35,7 @@ const main = async () => {
   const data = { stats: stats, holders: holders, tokenList: tokenList }
   const output = OUTPUT || 'snapshot.json';
   console.log(`snapshot exported to ${output}`)
-  fs.writeFile(`${output}`, JSON.stringify(data, null, 4), function (err) {
+  fs.writeFile(`${output}`, JSON.stringify(data, null, 4), { encoding: 'utf-8' }, function (err) {
     if (err) {
       console.log(err)
     }
