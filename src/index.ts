@@ -5,6 +5,11 @@ import * as fs from 'fs'
 
 const main = async () => {
   const { RPC, CONTRACT, START, END, OUTPUT } = process.env
+
+  if (!RPC || !CONTRACT || !START || !END) {
+    throw "RPC, CONTRACT, START and END environment variables are required";
+  }
+
   const provider = new JsonRpcProvider(RPC)
   const { chainId } = await provider.getNetwork()
   const contractInstance = new ethers.Contract(contracts[chainId], ABI, provider)
@@ -14,9 +19,11 @@ const main = async () => {
   const tokenList: any[] = []
   const holders: any[] = []
 
-  result.forEach((item: any, index: any) => {
-    tokenList.push({ tokenId: index + START, owner: item })
-    upsert(holders, { tokenId: index + START, owner: item })
+  result.forEach((owner: any, index: any) => {
+    const tokenId = parseInt(index) + parseInt(START)
+    console.log(index, START, tokenId)
+    tokenList.push({ tokenId, owner })
+    upsert(holders, { tokenId, owner })
   })
 
   const stats = {
